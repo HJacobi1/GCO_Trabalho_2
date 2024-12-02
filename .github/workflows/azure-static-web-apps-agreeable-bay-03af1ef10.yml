@@ -33,26 +33,26 @@ jobs:
           output_location: "." # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
           
-  #update-supabase:
-#    runs-on: ubuntu-latest
-#    needs: build_and_deploy_job
+  update-supabase:
+    runs-on: ubuntu-latest
+    needs: build_and_deploy_job
 
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
       
-#      - name: Install PostgreSQL client
-#        run: sudo apt-get install postgresql-client
+      - name: Install PostgreSQL client
+        run: sudo apt-get install postgresql-client
 
-#      - name: Run SQL Script on Supabase
-#        env:
-#          PGHOST: ${{ secrets.SUPABASE_HOST }}
-#          PGPORT: ${{ secrets.SUPABASE_PORT }}
-#          PGUSER: ${{ secrets.SUPABASE_USER }}
-#          PGPASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
-#          PGDATABASE: ${{ secrets.SUPABASE_DATABASE }}
-#        run: |
-#          psql -f scripts/update.sql   
+      - name: Run SQL Script on Supabase
+        env:
+          PGHOST: ${{ secrets.SUPABASE_HOST }}
+          PGPORT: ${{ secrets.SUPABASE_PORT }}
+          PGUSER: ${{ secrets.SUPABASE_USER }}
+          PGPASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
+          PGDATABASE: ${{ secrets.SUPABASE_DATABASE }}
+        run: |
+          psql -f scripts/update.sql   
           
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
