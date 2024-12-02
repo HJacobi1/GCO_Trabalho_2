@@ -52,7 +52,7 @@ jobs:
           PGPASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
           PGDATABASE: ${{ secrets.SUPABASE_DATABASE }}
         run: |
-          psql -f scripts/update.sql   
+          psql -h $PGHOST -p $PGPORT -d $PGDATABASE -U $PGUSER -f scripts/update.sql
           
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
