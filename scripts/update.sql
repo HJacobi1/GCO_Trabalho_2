@@ -1,0 +1,1 @@
+INSERT INTO TabelaTeste (1,'2024-12-01','teste_migration')
