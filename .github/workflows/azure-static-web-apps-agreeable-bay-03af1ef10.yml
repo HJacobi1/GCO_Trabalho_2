@@ -55,6 +55,3 @@ jobs:
                                              ${{ secrets.SUPABASE_DATABASE }} \
                                              ${{ secrets.SUPABASE_DEVELOP_USER }} \
                                              ${{ secrets.SUPABASE_DEVELOP_PASSWORD }}
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_AGREEABLE_BAY_03AF1EF10 }}
-          action: "close"
