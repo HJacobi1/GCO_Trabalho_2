@@ -49,7 +49,12 @@ jobs:
           PGPASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
           PGDATABASE: ${{ secrets.SUPABASE_DATABASE }}
         run: |
-          psql -h $PGHOST -p $PGPORT -d $PGDATABASE -U $PGUSER -f scripts/update.sql
+          chmod +x ./scripts/manage_migrations.sh
+          ./scripts/aplica_migrations.sh ${{ secrets.SUPABASE_HOST }} \
+                                         ${{ secrets.SUPABASE_PORT }} \
+                                         ${{ secrets.SUPABASE_DATABASE }} \
+                                         ${{ secrets.SUPABASE_USER }} \
+                                         ${{ secrets.SUPABASE_PASSWORD }}
           
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
