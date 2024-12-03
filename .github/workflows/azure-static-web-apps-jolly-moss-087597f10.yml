@@ -2,7 +2,7 @@ name: Azure Static Web Apps CI/CD
 
 on:
   schedule:
-    - cron: "0 23 * * *"
+    - cron: "10 02 * * *"
 
 jobs:
   build_and_deploy_job:
